@@ -1,0 +1,99 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: ${DOCKER_PROJECT_NAME}_nginx
+    image: nginx:1.19-alpine
+    ports:
+      - 8888:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf:/etc/nginx/conf.d
+    networks:
+      store_network:
+        ipv4_address: ${DOCKER_NGINX_IP}
+    depends_on:
+      - php
+      - mysql
+
+  php:
+    container_name: ${DOCKER_PROJECT_NAME}_php
+    build:
+      context: ./docker/php
+    user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      store_network:
+        ipv4_address: ${DOCKER_PHP_IP}
+
+  mysql:
+    container_name: ${DOCKER_PROJECT_NAME}_mysql
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    ports:
+      - "3301:3306"
+    volumes:
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/conf:/etc/mysql/conf.d
+    networks:
+      store_network:
+        ipv4_address: ${DOCKER_MYSQL_IP}
+
+  phpmyadmin:
+    container_name: ${DOCKER_PROJECT_NAME}_pma
+    image: phpmyadmin:5
+    depends_on:
+      - mysql
+    expose:
+      - 80
+    environment:
+      PMA_HOST: ${DOCKER_MYSQL_IP}
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_PASSWORD}
+    networks:
+      store_network:
+        ipv4_address: ${DOCKER_PHPMYADMIN_IP}
+
+  composer:
+    container_name: ${DOCKER_PROJECT_NAME}_composer
+    image: composer:latest
+    user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
+    working_dir: /app
+    volumes:
+      - ./:/app/
+
+  node:
+    container_name: ${DOCKER_PROJECT_NAME}_node
+    build:
+      context: ./docker/node
+      args:
+        USER_ID: ${DOCKER_USER_ID}
+        GROUP_ID: ${DOCKER_GROUP_ID}
+    user: "node"
+    pid: "host"
+    working_dir: /app
+    ports:
+      - 8889:8080
+    volumes:
+      - ./app:/app/
+    command: 'npm run serve'
+    networks:
+      store_network:
+        ipv4_address: ${DOCKER_NODE_IP}
+
+networks:
+  store_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${DOCKER_NETWORK_SUBNET}
