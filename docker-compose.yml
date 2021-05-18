@@ -5,9 +5,9 @@ services:
     container_name: ${DOCKER_PROJECT_NAME}_nginx
     image: nginx:1.19-alpine
     ports:
-      - 8888:80
+      - 8898:80
     volumes:
-      - ./:/var/www
+      - ./api:/var/www
       - ./docker/nginx/conf:/etc/nginx/conf.d
     networks:
       store_network:
@@ -23,7 +23,7 @@ services:
     user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
     working_dir: /var/www
     volumes:
-      - ./:/var/www
+      - ./api/:/var/www
     networks:
       store_network:
         ipv4_address: ${DOCKER_PHP_IP}
@@ -39,7 +39,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
     ports:
-      - "3301:3306"
+      - "3307:3306"
     volumes:
       - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
       - ./docker/mysql/data:/var/lib/mysql
@@ -69,7 +69,7 @@ services:
     user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
     working_dir: /app
     volumes:
-      - ./:/app/
+      - ./api/:/app/
 
   node:
     container_name: ${DOCKER_PROJECT_NAME}_node
@@ -82,10 +82,10 @@ services:
     pid: "host"
     working_dir: /app
     ports:
-      - 8889:8080
+      - 8899:80
     volumes:
-      - ./app:/app/
-    command: 'npm run serve'
+      - ./app/:/app
+    command: ['yarn', 'serve', '--port', '80']
     networks:
       store_network:
         ipv4_address: ${DOCKER_NODE_IP}

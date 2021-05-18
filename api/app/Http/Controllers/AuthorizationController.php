@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\AuthorizationService;
+use App\Services\UserService;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,20 +24,17 @@ class AuthorizationController extends BaseControler
            'password' => 'required'
         ]);
 
-        $data = $request->all();
-        $user = User::where('email', $data['email'])->first();
+        return (new AuthorizationService())->authorization($request->all());
+    }
 
-        if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json([
-                'error' => 'Not authorized'
-            ], 401);
-        }
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:5|max:30',
+            'email' => 'required',
+            'password' => 'required|min:5|max:30'
+        ]);
 
-        return [
-            'access_token' => JWT::encode(
-                ['email' => $user->email],
-                env('JWT_KEY')
-            )
-        ];
+        return (new UserService())->create($request);
     }
 }

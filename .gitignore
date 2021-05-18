@@ -1,6 +1,7 @@
-/docker/mysql/data/*
-/api/vendor
-/.idea
+./docker/mysql/data/*
+./docker/mysql/initdb/*
+./api/vendor
+./.idea
 Homestead.json
 Homestead.yaml
 .env

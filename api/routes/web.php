@@ -18,30 +18,22 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/authorization/token', 'AuthorizationController@makeToken');
+$router->post('/register', 'AuthorizationController@register');
 
 $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($router) {
-    $router->group(['prefix' => 'customer'], function () use ($router) {
-        $router->get('', 'CustomerController@index');
-        $router->post('', 'CustomerController@create');
-        $router->get('{id}', 'CustomerController@get');
-        $router->put('{id}', 'CustomerController@update');
-        $router->delete('{id}', 'CustomerController@destroy');
+    $router->group(['prefix' => 'user'], function () use ($router) {
+        $router->get('', 'UserController@index');
+        $router->post('', 'UserController@create');
+        $router->get('{id}', 'UserController@get');
+        $router->put('{id}', 'UserController@update');
+        $router->delete('{id}', 'UserController@destroy');
     });
 
-    $router->group(['prefix' => 'account'], function () use ($router) {
-        $router->get('', 'AccountController@index');
-        $router->post('', 'AccountController@create');
-        $router->get('{id}', 'AccountController@get');
-        $router->put('{id}', 'AccountController@update');
-        $router->delete('{id}', 'AccountController@destroy');
-    });
-
-    $router->group(['prefix' => 'transaction'], function () use ($router) {
-        $router->get('', 'TransactionController@index');
-        $router->get('{accountId}/account', 'TransactionController@listByAccount');
-        $router->post('', 'TransactionController@create');
-        $router->get('{id}', 'TransactionController@get');
-        $router->put('{id}', 'TransactionController@update');
-        $router->delete('{id}', 'TransactionController@destroy');
+    $router->group(['prefix' => 'store'], function () use ($router) {
+        $router->get('', 'StoreController@index');
+        $router->post('', 'StoreController@create');
+        $router->get('{id}', 'StoreController@get');
+        $router->put('{id}', 'StoreController@update');
+        $router->delete('{id}', 'StoreController@destroy');
     });
 });
