@@ -1,0 +1,450 @@
+{
+	"info": {
+		"_postman_id": "e7037a63-d91c-4e83-a700-e17e90985883",
+		"name": "StoreManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "172.23.0.2/api/v1/user",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "172.23.0.2/api/v1/user/1",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jon Maddog\",\n    \"email\": \"jonmaddog@test.com\",\n    \"password\": \"BigDog\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "172.23.0.2/api/v1/user",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Wiersinski Daniel\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "172.23.0.2/api/v1/user/1",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "172.23.0.2/api/v1/user/3",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "getList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "172.23.0.2/api/v1/store",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "172.23.0.2/api/v1/store/4",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"store",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Store 4\",\n    \"address\": \"Rua do Comércio\",\n    \"cep\": \"88301-004\",\n    \"city\": \"João Pessoa\",\n    \"state\": \"Paraíba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "172.23.0.2/api/v1/store",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Store 4\",\n    \"address\": \"Rua do Comércio\",\n    \"cep\": \"88301-004\",\n    \"city\": \"João Pessoa\",\n    \"state\": \"Paraíba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "172.23.0.2/api/v1/store/4",
+							"host": [
+								"172",
+								"23",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"store",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "172.22.0.2/api/v1/account/3",
+							"host": [
+								"172",
+								"22",
+								"0",
+								"2"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jonmaddog@test.com\",\n    \"password\": \"BigDog\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "172.23.0.2/authorization/token",
+					"host": [
+						"172",
+						"23",
+						"0",
+						"2"
+					],
+					"path": [
+						"authorization",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV1ZG90dG9AZ21haWwuY29tIn0.SzE8ie4JemWpbgMdpR1hDOT6-2tg1YkSn-loiwLhN0A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Jon Maddog\",\n    \"email\": \"jonmaddog@test.com\",\n    \"password\": \"BigDog\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "172.23.0.2/register",
+					"host": [
+						"172",
+						"23",
+						"0",
+						"2"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
