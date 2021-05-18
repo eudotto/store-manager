@@ -48,6 +48,14 @@ Testes:
 
     docker-compose exec php vendor/bin/phpunit
 
+Yarn Install
+
+    docker-compose run --rm node yarn install
+
+Para executar o app sem derubar as dockers
+
+    docker-compose run --rm node yarn serve --port 80
+
 Postman:
 
     importe o arquivo POSTMAN.json para PostMan para facilitar o teste da api  
